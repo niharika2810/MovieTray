@@ -1,6 +1,6 @@
 # MovieTray
 
-An application build to play around JetPack components.
+An application built to play around JetPack components. 
 
 # Introduction
 This App connects with [MovieDB API](https://developers.themoviedb.org/3/getting-started/introduction) and contains Popular and TopRated Movies.
@@ -29,6 +29,7 @@ This app is currently built using,
 * [MotionLayout](https://developer.android.com/training/constraint-layout/motionlayout)
 * [DataStore](https://developer.android.com/topic/libraries/architecture/datastore)
 * [Retrofit](https://square.github.io/retrofit/) for networking
+* CI configured using [Github actions](https://docs.github.com/en/free-pro-team@latest/actions/quickstart)
 
 >Note* : App is still under development. Will keep adding and exploring more components. Till then, Keep Learning!!
 
