@@ -33,11 +33,6 @@ android {
         }
     }
 
-    // for hiding the API key credits to: https://stackoverflow.com/a/34021467/8899344
-    buildTypes.each {
-        it.buildConfigField 'String', 'API_KEY', api_key
-    }
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8

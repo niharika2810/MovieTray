@@ -1,6 +1,7 @@
 package com.movietray.base.utils
 
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.Priority
@@ -25,4 +26,14 @@ object DataBindingAdapter {
             .transition(DrawableTransitionOptions.withCrossFade(500))
             .into(view)
     }
+
+    @JvmStatic
+    @BindingAdapter("setPopularity")
+    fun setPopularity(view: TextView, popularity: String?) {
+        view.text = String.format(
+            view.context.resources.getString(R.string.popularity_string),
+            popularity
+        )
+    }
+
 }

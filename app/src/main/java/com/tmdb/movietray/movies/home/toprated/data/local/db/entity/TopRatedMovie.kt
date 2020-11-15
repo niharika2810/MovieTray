@@ -14,5 +14,5 @@ data class TopRatedMovie(
     @PrimaryKey
     val title: String,
     val description: String,
-    val voteAverage: Double
+    val popularity: String
 ) : IMovieType

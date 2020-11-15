@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="showing_you_movies">Showing you the %s Movies</string>
+    <string name="popularity_string">Popularity : %s</string>
 </resources>

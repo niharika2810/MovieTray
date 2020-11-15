@@ -16,8 +16,7 @@ fun MoviesResponse.mapDataToPopularMovies(): Movies =
                     it.id,
                     it.posterPath,
                     it.title,
-                    it.overview,
-                    it.voteAverage
+                    it.overview
                 )
             }
         )
@@ -35,7 +34,7 @@ fun MoviesResponse.mapDataToTopRatedMovies(): Movies =
                     it.posterPath,
                     it.title,
                     it.overview,
-                    it.voteAverage
+                    it.popularity.toString()
                 )
             }
         )

@@ -13,8 +13,7 @@ data class MoviesResponse(
         val id: Long,
         val title: String,
         val description: String,
-        val voteAverage: Double,
+        val popularity: Double,
         val overview: String,
-        val releaseDate: String?
     )
 }
