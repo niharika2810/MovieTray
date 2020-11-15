@@ -1,6 +1,6 @@
 # MovieTray
 
-An application build to play around JetPack components. 
+An application built to play around JetPack components. 
 
 # Introduction
 This App connects with [MovieDB API](https://developers.themoviedb.org/3/getting-started/introduction) and contains Popular and TopRated Movies.
