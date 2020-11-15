@@ -29,7 +29,7 @@ This app is currently built using,
 * [MotionLayout](https://developer.android.com/training/constraint-layout/motionlayout)
 * [DataStore](https://developer.android.com/topic/libraries/architecture/datastore)
 * [Retrofit](https://square.github.io/retrofit/) for networking
-* CI configures using [Github actions](https://docs.github.com/en/free-pro-team@latest/actions/quickstart)
+* CI configured using [Github actions](https://docs.github.com/en/free-pro-team@latest/actions/quickstart)
 
 >Note* : App is still under development. Will keep adding and exploring more components. Till then, Keep Learning!!
 
