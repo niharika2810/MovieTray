@@ -7,4 +7,4 @@ import dagger.hilt.android.HiltAndroidApp
  * @author Niharika.Arora
  */
 @HiltAndroidApp
-class MovieApplication : Application()
+class MovieTrayApplication : Application()

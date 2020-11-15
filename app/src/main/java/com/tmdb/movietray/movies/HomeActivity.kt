@@ -32,7 +32,7 @@ import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity(), HomeFragment.HomeCallback {
+class HomeActivity : AppCompatActivity(), HomeFragment.HomeCallback {
 
 
     private var alertDialogView: AlertDialogView? = null
