@@ -12,6 +12,9 @@ import com.tmdb.movietray.databinding.ListItemTopRatedMoviesBinding
 import com.tmdb.movietray.movies.home.HomeFragmentDirections
 import com.tmdb.movietray.movies.home.toprated.data.local.db.entity.TopRatedMovie
 
+/**
+ * @author Niharika.Arora
+ */
 class TopRatedMoviesAdapter :
     PagingDataAdapter<TopRatedMovie, TopRatedMoviesAdapter.ViewHolder>(
         TopRatedMoviesDiffUtil

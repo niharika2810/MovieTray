@@ -3,6 +3,9 @@ package com.movietray.base.utils.typeconverter
 import androidx.room.TypeConverter
 import java.util.*
 
+/**
+ * @author Niharika.Arora
+ */
 class TypeConverter {
 
     @TypeConverter

@@ -7,6 +7,9 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ActivityComponent
 
+/**
+ * @author Niharika.Arora
+ */
 @Module
 @InstallIn(ActivityComponent::class)
 class PopularRepositoryModule {

@@ -5,7 +5,9 @@ import com.tmdb.movietray.movies.common.data.entity.MoviesResponse
 import com.tmdb.movietray.movies.home.popular.data.local.entity.PopularMovie
 import com.tmdb.movietray.movies.home.toprated.data.local.db.entity.TopRatedMovie
 
-//todo change some fields in popular and top rated - Put in Feature module
+/**
+ * @author Niharika.Arora
+ */
 fun MoviesResponse.mapDataToPopularMovies(): Movies =
     with(this) {
         Movies(

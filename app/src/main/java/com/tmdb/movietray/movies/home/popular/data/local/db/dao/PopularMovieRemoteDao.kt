@@ -6,6 +6,9 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.tmdb.movietray.movies.home.popular.data.local.entity.PopularMoviesRemoteKeys
 
+/**
+ * @author Niharika.Arora
+ */
 @Dao
 interface PopularMovieRemoteDao {
 

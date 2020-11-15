@@ -13,7 +13,7 @@ Here is a glimpse of sample application:
 <img width="200" height="300" src="/art/screenshot_nav.png">
 <img width="200" height="300" src="/art/screenshot_home.png">
 <img width="200" height="300" src="/art/screenshot_detail.png">
-<img width="200" height="300" src="/art/screenshot_five.png">
+<img width="200" height="300" src="/art/screenshot_about.png">
 </div>
 
 ## Android Architecture & Components

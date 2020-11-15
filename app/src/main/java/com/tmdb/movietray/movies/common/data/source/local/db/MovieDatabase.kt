@@ -15,7 +15,9 @@ import com.tmdb.movietray.movies.home.toprated.data.local.db.dao.TopRatedMovieRe
 import com.tmdb.movietray.movies.home.toprated.data.local.db.entity.TopRatedMovie
 import com.tmdb.movietray.movies.home.toprated.data.local.db.entity.TopRatedMoviesRemoteKeys
 
-
+/**
+ * @author Niharika.Arora
+ */
 @Database(
     entities = [PopularMovie::class, PopularMoviesRemoteKeys::class, TopRatedMovie::class, TopRatedMoviesRemoteKeys::class],
     version = 2,

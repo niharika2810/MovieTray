@@ -12,7 +12,9 @@ import com.movietray.base.utils.Constants
 import com.movietray.base.utils.UtilityClass
 import com.tmdb.movietray.databinding.FragmentHomeBinding
 
-
+/**
+ * @author Niharika.Arora
+ */
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding

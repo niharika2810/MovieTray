@@ -11,6 +11,9 @@ import com.bumptech.glide.Glide
 import com.movietray.base.utils.Constants
 import com.tmdb.movietray.databinding.FragmentDetailsBinding
 
+/**
+ * @author Niharika.Arora
+ */
 class DetailsFragment : Fragment() {
     private lateinit var binding: FragmentDetailsBinding
     private val args: DetailsFragmentArgs by navArgs()

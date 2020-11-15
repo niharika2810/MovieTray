@@ -7,6 +7,9 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.RecyclerView
 import com.tmdb.core.databinding.LoadingViewBinding
 
+/**
+ * @author Niharika.Arora
+ */
 class LoadStateViewHolder(
     private val binding: LoadingViewBinding,
     retry: () -> Unit

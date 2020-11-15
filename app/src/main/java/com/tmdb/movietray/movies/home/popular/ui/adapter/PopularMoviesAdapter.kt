@@ -12,6 +12,9 @@ import com.tmdb.movietray.databinding.ListItemPopularMoviesBinding
 import com.tmdb.movietray.movies.home.HomeFragmentDirections
 import com.tmdb.movietray.movies.home.popular.data.local.entity.PopularMovie
 
+/**
+ * @author Niharika.Arora
+ */
 class PopularMoviesAdapter :
     PagingDataAdapter<PopularMovie, PopularMoviesAdapter.ViewHolder>(PopularMoviesDiffUtil) {
 

@@ -11,6 +11,9 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 import javax.inject.Singleton
 
+/**
+ * @author Niharika.Arora
+ */
 @Singleton
 class IPopularMoviesRepository @Inject constructor(
     private val database: MovieDatabase,
