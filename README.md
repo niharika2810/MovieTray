@@ -7,11 +7,22 @@ This App connects with [MovieDB API](https://developers.themoviedb.org/3/getting
 
 Here is a glimpse of sample application:
 
-![Screenshot_one.png](art/screenshot_splash.png)
-![Screenshot_one.png](art/screenshot_nav.png)
-![Screenshot_one.png](art/screenshot_home.png)
-![Screenshot_one.png](art/screenshot_detail.png)
-![Screenshot_one.png](art/screenshot_five.png)
+
+<div>
+<img width="300" height="300" src="/art/screenshot_splash.png">
+</div>
+<div>
+<img width="300" height="300" src="/art/screenshot_nav.png">
+</div>
+<div>
+<img width="300" height="300" src="/art/screenshot_home.png">
+</div>
+<div>
+<img width="300" height="300" src="/art/screenshot_detail.png">
+</div>
+<div>
+<img width="300" height="300" src="/art/screenshot_five.png">
+</div>
 
 ## Android Architecture & Components
 
