@@ -12,6 +12,7 @@ import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.asLiveData
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -30,6 +31,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*
+import kotlinx.coroutines.launch
 
 /**
  * @author Niharika.Arora
@@ -104,7 +106,15 @@ class HomeActivity : AppCompatActivity(), HomeFragment.HomeCallback {
         profileName.setBackgroundColor(ContextCompat.getColor(this, R.color.transparent))
         drawer_layout.closeDrawer(Gravity.LEFT)
         profileEdit.setImageResource(R.drawable.ic_baseline_edit_24)
+        storeUserName(profileName)
         Toast.makeText(this, resources.getString(R.string.changes_saved), Toast.LENGTH_LONG).show()
+    }
+
+    private fun storeUserName(profileName: EditText) {
+        removeDialogPopup()
+        lifecycleScope.launch {
+            dataStoreProvider.setValue(DataStoreProvider.KEY_NAME, profileName.text.toString())
+        }
     }
 
     private fun onEditingEnabled(
