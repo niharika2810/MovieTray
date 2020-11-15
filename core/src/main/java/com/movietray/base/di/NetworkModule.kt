@@ -1,6 +1,5 @@
 package com.movietray.base.di
 
-import androidx.databinding.library.BuildConfig
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -25,7 +24,7 @@ object NetworkModule {
     private const val BASE_URL = "https://api.themoviedb.org/3/movie/"
 
     @Provides
-    fun provideApiKey() = BuildConfig.API
+    fun provideApiKey() = BuildConfig.API_KEY
 
     private val gson: Gson = GsonBuilder()
         .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
