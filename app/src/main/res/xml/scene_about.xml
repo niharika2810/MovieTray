@@ -1,0 +1,100 @@
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:autoTransition="animateToEnd"
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@+id/start"
+        motion:duration="2000" />
+    <ConstraintSet android:id="@+id/start">
+
+        <Constraint
+            android:id="@id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:scaleX="0"
+            android:scaleY="0"
+            android:translationX="100dp"
+            android:translationY="100dp"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@id/app_icon" />
+
+        <Constraint
+            android:id="@id/about_app"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:scaleX="0"
+            android:scaleY="0"
+            android:gravity="center"
+            android:translationX="-200dp"
+            android:translationY="-200dp"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@id/guidLineAuth" />
+
+        <Constraint
+            android:id="@id/app_icon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginBottom="20dp"
+            android:scaleX="0"
+            android:scaleY="0"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/app_icon"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@id/about_app" />
+    </ConstraintSet>
+
+    <ConstraintSet
+        android:id="@+id/end"
+        motion:transitionEasing="decelerate">
+
+        <Constraint
+            android:id="@id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:scaleX="1"
+            android:scaleY="1"
+            android:translationX="0dp"
+            android:translationY="0dp"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@id/app_icon" />
+
+        <Constraint
+            android:id="@id/about_app"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:scaleX="1"
+            android:scaleY="1"
+            android:gravity="center"
+            android:translationX="0dp"
+            android:translationY="0dp"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@id/guidLineAuth" />
+
+
+        <Constraint
+            android:id="@id/app_icon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginBottom="20dp"
+            android:scaleX="1"
+            android:scaleY="1"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/app_icon"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@id/about_app" />
+    </ConstraintSet>
+
+</MotionScene>

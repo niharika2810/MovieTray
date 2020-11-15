@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.tmdb.movietray.movies.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/navToItemDetailFragment"
+            app:destination="@id/itemDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/popularMoviesFragment"
+        android:name="com.tmdb.movietray.movies.home.popular.ui.fragment.PopularMoviesFragment"
+        android:label="PopularMoviesFragment" />
+
+    <fragment
+        android:id="@+id/topRatedMoviesFragment"
+        android:name="com.tmdb.movietray.movies.home.toprated.ui.fragment.TopRatedMoviesFragment"
+        android:label="TopRatedMoviesFragment" />
+
+    <fragment
+        android:id="@+id/nav_about"
+        android:name="com.tmdb.movietray.movies.about.ui.fragment.AboutFragment"
+        android:label="About App"
+        tools:layout="@layout/fragment_about" />
+
+
+    <fragment
+        android:id="@+id/itemDetailFragment"
+        android:name="com.tmdb.movietray.movies.home.details.fragment.ui.DetailsFragment"
+        android:label="Details"
+        tools:layout="@layout/fragment_details">
+        <argument
+            android:name="imageUrl"
+            app:argType="string" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="description"
+            app:argType="string" />
+    </fragment>
+</navigation>
