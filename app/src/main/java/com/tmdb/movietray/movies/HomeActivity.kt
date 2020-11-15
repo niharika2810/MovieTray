@@ -6,17 +6,15 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.asLiveData
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.movietray.base.data.local.DataStoreProvider
 import com.movietray.base.extension.buildDialog
 import com.movietray.base.extension.negativeAction
 import com.movietray.base.extension.positiveAction
@@ -27,7 +25,6 @@ import com.tmdb.movietray.databinding.ActivityMainBinding
 import com.tmdb.movietray.databinding.NavHeaderMainBinding
 import com.tmdb.movietray.movies.home.HomeFragment
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 
 
 /**
@@ -39,13 +36,13 @@ class HomeActivity : AppCompatActivity(), HomeFragment.HomeCallback {
     private lateinit var navHeaderBinding: NavHeaderMainBinding
     private lateinit var binding: ActivityMainBinding
     private var alertDialogView: AlertDialogView? = null
+    private val homeViewModel: HomeViewModel by viewModels()
 
     companion object {
         const val FADING_ANIMATION_DURATION = 200L
         const val ALPHA_TRANSPARENT = 0.0f
     }
 
-    private lateinit var dataStoreProvider: DataStoreProvider
     private var isEditing: Boolean = false
     private lateinit var appBarConfiguration: AppBarConfiguration
 
@@ -58,23 +55,19 @@ class HomeActivity : AppCompatActivity(), HomeFragment.HomeCallback {
         navHeaderBinding = NavHeaderMainBinding.bind(headerView)
         setSupportActionBar(binding.appBarContainer.toolbar)
 
-        dataStoreProvider = DataStoreProvider(this)
 
-        configureUserName()
+        homeViewModel.configureUserName()
+        observeUserName()
         onProfileEditClick()
         configureNavController()
     }
 
-    private fun configureUserName() {
-        dataStoreProvider.getValue(DataStoreProvider.KEY_NAME).asLiveData()
-            .observe(this, { it ->
-                if (it.isNullOrEmpty()) {
-                    navHeaderBinding.profileName.setText(getString(R.string.default_text))
-                } else {
-                    navHeaderBinding.profileName.setText(it)
-                }
-            })
+    private fun observeUserName() {
+        homeViewModel.userName.observe(this, {
+            navHeaderBinding.profileName.setText(it)
+        })
     }
+
 
     private fun onProfileEditClick() {
         navHeaderBinding.profileEdit.setOnClickListener {
@@ -103,12 +96,7 @@ class HomeActivity : AppCompatActivity(), HomeFragment.HomeCallback {
 
     private fun storeUserName() {
         removeDialogPopup()
-        lifecycleScope.launch {
-            dataStoreProvider.setValue(
-                DataStoreProvider.KEY_NAME,
-                navHeaderBinding.profileName.text.toString()
-            )
-        }
+        homeViewModel.setUserName(navHeaderBinding.profileName.text.toString())
     }
 
     private fun onEditingEnabled() {
@@ -150,6 +138,7 @@ class HomeActivity : AppCompatActivity(), HomeFragment.HomeCallback {
     }
 
     private fun configureDialog() {
+        binding.drawerLayout.closeDrawer(Gravity.LEFT)
         createAlertDialog(getString(R.string.dialog_title),
             getString(R.string.dialog_negative_answer),
             getString(R.string.dialog_positive_answer),

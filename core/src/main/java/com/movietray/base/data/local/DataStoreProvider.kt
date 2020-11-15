@@ -10,15 +10,13 @@ import kotlinx.coroutines.flow.map
 /**
  * @author Niharika.Arora
  */
-class DataStoreProvider(
-    context: Context
-) {
-    private val applicationContext = context.applicationContext
+object DataStoreProvider {
+
     private lateinit var dataStore: DataStore<Preferences>
 
-    init {
+    fun init(context: Context) {
         if (!::dataStore.isInitialized) {
-            dataStore = applicationContext.createDataStore(name = "app_preferences")
+            dataStore = context.createDataStore(name = "app_preferences")
         }
     }
 
@@ -33,7 +31,4 @@ class DataStoreProvider(
         }
     }
 
-    companion object {
-        val KEY_NAME = preferencesKey<String>("key_user_name")
-    }
 }
