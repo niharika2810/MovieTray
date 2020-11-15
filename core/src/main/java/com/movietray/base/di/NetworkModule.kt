@@ -24,7 +24,7 @@ object NetworkModule {
     private const val BASE_URL = "https://api.themoviedb.org/3/movie/"
 
     @Provides
-    fun provideApiKey() = "7bc0651fe0ea5973822df3bd27e779d9"
+    fun provideApiKey() = BuildConfig.API_KEY
 
     private val gson: Gson = GsonBuilder()
         .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
