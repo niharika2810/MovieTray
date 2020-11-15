@@ -61,6 +61,3 @@ output-metadata.json
 app/mapping.txt
 app/usage.txt
 app/seeds.txt
-
-gradle.properties
-

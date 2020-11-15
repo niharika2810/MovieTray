@@ -9,6 +9,15 @@ plugins {
 
 apply from: 'dependency.gradle'
 
+
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+ext {
+    apiKey = keystoreProperties['api_key']
+}
+
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
@@ -24,10 +33,9 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
-    }
 
-    buildTypes.each {
-        it.buildConfigField 'String', 'API_KEY', api_key
+        buildConfigField "String", "API_KEY", "\"${apiKey}\""
+
     }
 
     buildTypes {
