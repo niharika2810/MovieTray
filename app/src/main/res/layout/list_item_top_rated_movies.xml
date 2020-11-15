@@ -49,10 +49,12 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
+                android:lines="2"
+                android:ellipsize="end"
                 android:text="@{movie.title}"
                 android:textAppearance="?attr/textAppearanceListItem"
                 android:transitionName="title"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/movie_popularity"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/item_image"
@@ -71,7 +73,6 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/movie_title"
                 tools:text="12.86" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
