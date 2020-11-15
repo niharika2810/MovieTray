@@ -17,23 +17,22 @@ object DataBindingAdapter {
 
     @JvmStatic
     @BindingAdapter("setImage")
-    fun setImage(view: ImageView, relativeImageUrl: String?) {
+    fun ImageView.setImage(relativeImageUrl: String?) {
         val requestOptions = RequestOptions().priority(Priority.IMMEDIATE)
             .placeholder(R.drawable.ic_movie_placeholder)
 
-        Glide.with(view.context).load(Constants.IMAGE_BASE_URL + relativeImageUrl)
+        Glide.with(context).load(Constants.IMAGE_BASE_URL + relativeImageUrl)
             .apply(requestOptions)
             .transition(DrawableTransitionOptions.withCrossFade(500))
-            .into(view)
+            .into(this)
     }
 
     @JvmStatic
     @BindingAdapter("setPopularity")
-    fun setPopularity(view: TextView, popularity: String?) {
-        view.text = String.format(
-            view.context.resources.getString(R.string.popularity_string),
+    fun TextView.setPopularity(popularity: String?) {
+        text = String.format(
+            context.resources.getString(R.string.popularity_string),
             popularity
         )
     }
-
 }

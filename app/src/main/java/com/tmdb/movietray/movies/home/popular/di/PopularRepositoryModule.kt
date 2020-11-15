@@ -15,7 +15,7 @@ import dagger.hilt.android.components.ActivityComponent
 class PopularRepositoryModule {
 
     @Provides
-    fun providePopularMoviesRepository(repository: IPopularMoviesRepository): PopularMoviesRepository {
-        return repository
+    fun providePopularMoviesRepository(iPopularMoviesRepository: IPopularMoviesRepository): PopularMoviesRepository {
+        return iPopularMoviesRepository
     }
 }

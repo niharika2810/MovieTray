@@ -5,15 +5,13 @@ import android.view.Gravity
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.AppCompatEditText
-import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.findNavController
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -25,13 +23,12 @@ import com.movietray.base.extension.positiveAction
 import com.movietray.base.extension.title
 import com.movietray.base.utils.dialog.AlertDialogView
 import com.tmdb.movietray.R
+import com.tmdb.movietray.databinding.ActivityMainBinding
+import com.tmdb.movietray.databinding.NavHeaderMainBinding
 import com.tmdb.movietray.movies.home.HomeFragment
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.app_bar_main.*
-import kotlinx.android.synthetic.main.content_main.*
-import kotlinx.android.synthetic.main.nav_header_main.view.*
 import kotlinx.coroutines.launch
+
 
 /**
  * @author Niharika.Arora
@@ -39,9 +36,9 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class HomeActivity : AppCompatActivity(), HomeFragment.HomeCallback {
 
-
+    private lateinit var navHeaderBinding: NavHeaderMainBinding
+    private lateinit var binding: ActivityMainBinding
     private var alertDialogView: AlertDialogView? = null
-
 
     companion object {
         const val FADING_ANIMATION_DURATION = 200L
@@ -55,76 +52,71 @@ class HomeActivity : AppCompatActivity(), HomeFragment.HomeCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.Theme_JetPackTmdb_NoActionBar);
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        setSupportActionBar(toolbar)
-        val (profileEdit, profileName) = initNavViews()
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        val headerView = binding.navView.getHeaderView(0)
+        navHeaderBinding = NavHeaderMainBinding.bind(headerView)
+        setSupportActionBar(binding.appBarContainer.toolbar)
 
         dataStoreProvider = DataStoreProvider(this)
 
-        configureUserName(profileName)
-        onProfileEditClick(profileEdit, profileName)
+        configureUserName()
+        onProfileEditClick()
         configureNavController()
     }
 
-    private fun initNavViews(): Pair<AppCompatImageView, AppCompatEditText> {
-        val profileEdit = nav_view.getHeaderView(0).profile_edit
-        val profileName = nav_view.getHeaderView(0).profile_name
-        return Pair(profileEdit, profileName)
-    }
-
-    private fun configureUserName(profileName: AppCompatEditText) {
+    private fun configureUserName() {
         dataStoreProvider.getValue(DataStoreProvider.KEY_NAME).asLiveData()
             .observe(this, { it ->
                 if (it.isNullOrEmpty()) {
-                    profileName.setText("Hello User")
+                    navHeaderBinding.profileName.setText(getString(R.string.default_text))
                 } else {
-                    profileName.setText(it)
+                    navHeaderBinding.profileName.setText(it)
                 }
             })
     }
 
-    private fun onProfileEditClick(
-        profileEdit: ImageView,
-        profileName: EditText
-    ) {
-        profileEdit.setOnClickListener {
+    private fun onProfileEditClick() {
+        navHeaderBinding.profileEdit.setOnClickListener {
             isEditing = !isEditing
-            profileName.isEnabled = !profileName.isEnabled
+            navHeaderBinding.profileName.isEnabled = !navHeaderBinding.profileName.isEnabled
             if (isEditing) {
-                onEditingEnabled(profileName, profileEdit)
+                onEditingEnabled()
             } else {
-                onEditingDisabled(profileName, profileEdit)
+                onEditingDisabled()
             }
         }
     }
 
-    private fun onEditingDisabled(
-        profileName: EditText,
-        profileEdit: ImageView
-    ) {
-        profileName.setBackgroundColor(ContextCompat.getColor(this, R.color.transparent))
-        drawer_layout.closeDrawer(Gravity.LEFT)
-        profileEdit.setImageResource(R.drawable.ic_baseline_edit_24)
-        storeUserName(profileName)
+    private fun onEditingDisabled() {
+        navHeaderBinding.profileName.setBackgroundColor(
+            ContextCompat.getColor(
+                this,
+                R.color.transparent
+            )
+        )
+        binding.drawerLayout.closeDrawer(Gravity.LEFT)
+        navHeaderBinding.profileEdit.setImageResource(R.drawable.ic_baseline_edit_24)
+        storeUserName()
         Toast.makeText(this, resources.getString(R.string.changes_saved), Toast.LENGTH_LONG).show()
     }
 
-    private fun storeUserName(profileName: EditText) {
+    private fun storeUserName() {
         removeDialogPopup()
         lifecycleScope.launch {
-            dataStoreProvider.setValue(DataStoreProvider.KEY_NAME, profileName.text.toString())
+            dataStoreProvider.setValue(
+                DataStoreProvider.KEY_NAME,
+                navHeaderBinding.profileName.text.toString()
+            )
         }
     }
 
-    private fun onEditingEnabled(
-        profileName: EditText,
-        profileEdit: ImageView
-    ) {
+    private fun onEditingEnabled() {
+        val profileName = navHeaderBinding.profileName
         profileName.requestFocus()
         showKeyBoard(profileName)
         profileName.setSelection(profileName.text.toString().length)
-        profileEdit.setImageResource(R.drawable.ic_baseline_done_24)
+        navHeaderBinding.profileEdit.setImageResource(R.drawable.ic_baseline_done_24)
     }
 
     private fun showKeyBoard(profileName: EditText) {
@@ -134,20 +126,23 @@ class HomeActivity : AppCompatActivity(), HomeFragment.HomeCallback {
     }
 
     private fun configureNavController() {
-        val navController = findNavController(R.id.nav_host_fragment)
-
+        val navController = findNavController()
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.nav_home, R.id.nav_about
-            ), drawer_layout
+            ), binding.drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
-        nav_view.setupWithNavController(navController)
+        binding.navView.setupWithNavController(navController)
+    }
+
+    private fun findNavController(): NavController {
+        return (supportFragmentManager
+            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment).navController
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment)
-        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+        return findNavController().navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
     override fun onBackPressedFromHome() {
@@ -161,7 +156,7 @@ class HomeActivity : AppCompatActivity(), HomeFragment.HomeCallback {
             { finish() },
             { removeDialogPopup() }).let {
             alertDialogView = it
-            rootView.addView(
+            binding.appBarContainer.contentMainContainer.rootView.addView(
                 alertDialogView,
                 ViewGroup.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
@@ -191,7 +186,7 @@ class HomeActivity : AppCompatActivity(), HomeFragment.HomeCallback {
                 .alpha(ALPHA_TRANSPARENT)
                 .setDuration(FADING_ANIMATION_DURATION)
                 .withEndAction {
-                    rootView.removeView(it)
+                    binding.appBarContainer.contentMainContainer.rootView.removeView(it)
                 }
                 .start()
         }

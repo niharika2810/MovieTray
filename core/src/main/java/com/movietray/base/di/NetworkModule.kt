@@ -6,13 +6,13 @@ import com.google.gson.GsonBuilder
 import com.tmdb.core.BuildConfig
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import javax.inject.Singleton
-import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
 
 /**
  * @author Niharika.Arora
@@ -41,7 +41,6 @@ object NetworkModule {
     } else OkHttpClient
         .Builder()
         .build()
-
 
     @Provides
     @Singleton

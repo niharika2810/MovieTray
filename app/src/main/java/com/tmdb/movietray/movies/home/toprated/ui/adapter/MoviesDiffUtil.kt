@@ -12,14 +12,12 @@ object TopRatedMoviesDiffUtil : DiffUtil.ItemCallback<TopRatedMovie>() {
     override fun areItemsTheSame(
         oldItem: TopRatedMovie,
         newItem: TopRatedMovie
-    ): Boolean {
-        return oldItem == newItem
-    }
+    ): Boolean = oldItem == newItem
+
 
     override fun areContentsTheSame(
         oldItem: TopRatedMovie,
         newItem: TopRatedMovie
-    ): Boolean {
-        return oldItem.movieId == newItem.movieId
-    }
+    ): Boolean = oldItem.movieId == newItem.movieId
+
 }

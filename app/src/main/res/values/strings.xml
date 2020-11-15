@@ -14,4 +14,5 @@
     <string name="app_description">Movie Tray is an application created by Niharika Arora to explore Android JetPack components. Its a playground application focusing on Paging3, MVVM architecture, Kotlin Extension functions, DSL, Navigation component, MotionLayout, SharedElementTransition, Single Activity Architecture, DataStore etc. Developer will keep adding and exploring more JetPack components with time. Till then, Keep learning!!</string>
     <string name="about_tmdb_playground">Movie Tray App</string>
     <string name="changes_saved">Your changes are saved successfully.</string>
+    <string name="default_text">Hello User</string>
 </resources>

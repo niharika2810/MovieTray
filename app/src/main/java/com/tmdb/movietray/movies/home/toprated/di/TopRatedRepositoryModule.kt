@@ -15,7 +15,7 @@ import dagger.hilt.android.components.ActivityComponent
 class TopRatedRepositoryModule {
 
     @Provides
-    fun provideTopRatedMoviesRepository(repository: ITopRatedMoviesRepository): TopRatedMoviesRepository {
-        return repository
+    fun provideTopRatedMoviesRepository(iTopRatedMoviesRepository: ITopRatedMoviesRepository): TopRatedMoviesRepository {
+        return iTopRatedMoviesRepository
     }
 }

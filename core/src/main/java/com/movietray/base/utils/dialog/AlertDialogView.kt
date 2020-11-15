@@ -4,14 +4,13 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
-import android.widget.LinearLayout
-import com.tmdb.core.R
-import kotlinx.android.synthetic.main.alert_dialog_view.view.*
+import com.tmdb.core.databinding.AlertDialogViewBinding
 
 /**
  * @author Niharika.Arora
  */
-class AlertDialogView : LinearLayout {
+class AlertDialogView : FrameLayout {
+    private lateinit var binding: AlertDialogViewBinding
     private lateinit var title: String
     private lateinit var negativeText: String
     private lateinit var positiveText: String
@@ -46,18 +45,20 @@ class AlertDialogView : LinearLayout {
         setClickListeners()
     }
 
-    private fun inflateLayout(context: Context) =
-        LayoutInflater.from(context).inflate(R.layout.alert_dialog_view, this, true)
+    private fun inflateLayout(context: Context): AlertDialogViewBinding {
+        binding = AlertDialogViewBinding.inflate(LayoutInflater.from(context), this, true)
+        return binding
+    }
 
     private fun configureText() {
-        title_view.text = title
-        negative_view.text = negativeText
-        positive_view.text = positiveText
+        binding.titleView.text = title
+        binding.negativeView.text = negativeText
+        binding.positiveView.text = positiveText
     }
 
     private fun setClickListeners() {
-        negative_view.setOnClickListener { onNegativeClickAction.invoke() }
-        positive_view.setOnClickListener { onPositiveClickAction.invoke() }
+        binding.negativeView.setOnClickListener { onNegativeClickAction.invoke() }
+        binding.positiveView.setOnClickListener { onPositiveClickAction.invoke() }
     }
 
     class AlertDialogBuilder {

@@ -11,14 +11,11 @@ object PopularMoviesDiffUtil : DiffUtil.ItemCallback<PopularMovie>() {
     override fun areItemsTheSame(
         oldItem: PopularMovie,
         newItem: PopularMovie
-    ): Boolean {
-        return oldItem.movieId == newItem.movieId
-    }
+    ): Boolean = oldItem.movieId == newItem.movieId
 
     override fun areContentsTheSame(
         oldItem: PopularMovie,
         newItem: PopularMovie
-    ): Boolean {
-        return oldItem == newItem
-    }
+    ): Boolean = oldItem == newItem
+
 }
