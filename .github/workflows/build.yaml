@@ -14,15 +14,12 @@ jobs:
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
-
       - name: Run Android Linter
-      run: ./gradlew lintDebug
-
+        run: ./gradlew lintDebug
       - name: Build the app
         run: ./gradlew build
-
       - name: Assemble Debug APK
-      run: ./gradlew assembleDebug
+        run: ./gradlew assembleDebug
 
 
 
