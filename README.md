@@ -9,19 +9,11 @@ Here is a glimpse of sample application:
 
 
 <div>
-<img width="300" height="300" src="/art/screenshot_splash.png">
-</div>
-<div>
-<img width="300" height="300" src="/art/screenshot_nav.png">
-</div>
-<div>
-<img width="300" height="300" src="/art/screenshot_home.png">
-</div>
-<div>
-<img width="300" height="300" src="/art/screenshot_detail.png">
-</div>
-<div>
-<img width="300" height="300" src="/art/screenshot_five.png">
+<img width="200" height="300" src="/art/screenshot_splash.png">
+<img width="200" height="300" src="/art/screenshot_nav.png">
+<img width="200" height="300" src="/art/screenshot_home.png">
+<img width="200" height="300" src="/art/screenshot_detail.png">
+<img width="200" height="300" src="/art/screenshot_five.png">
 </div>
 
 ## Android Architecture & Components
