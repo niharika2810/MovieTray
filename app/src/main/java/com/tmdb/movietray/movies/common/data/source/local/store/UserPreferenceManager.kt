@@ -1,4 +1,4 @@
-package com.movietray.base.data.store
+package com.tmdb.movietray.movies.common.data.source.local.store
 
 import kotlinx.coroutines.flow.Flow
 

@@ -1,12 +1,11 @@
 package com.tmdb.movietray.movies
 
-import android.provider.SyncStateContract
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.movietray.base.data.store.UserPreferenceManager
+import com.tmdb.movietray.movies.common.data.source.local.store.UserPreferenceManager
 import com.movietray.base.utils.Constants
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch

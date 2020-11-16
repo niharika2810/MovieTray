@@ -1,7 +1,7 @@
-package com.movietray.base.di
+package com.tmdb.movietray.movies.common.di
 
-import com.movietray.base.data.store.IUserPreferenceManager
-import com.movietray.base.data.store.UserPreferenceManager
+import com.tmdb.movietray.movies.common.data.source.local.store.IUserPreferenceManager
+import com.tmdb.movietray.movies.common.data.source.local.store.UserPreferenceManager
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -1,9 +1,9 @@
-package com.movietray.base.data.store
+package com.tmdb.movietray.movies.common.data.source.local.store
 
 import androidx.datastore.preferences.preferencesKey
 import com.movietray.base.data.local.DataStoreProvider.getValue
 import com.movietray.base.data.local.DataStoreProvider.setValue
-import com.movietray.base.data.store.IUserPreferenceManager.Keys.USER_NAME
+import com.tmdb.movietray.movies.common.data.source.local.store.IUserPreferenceManager.Keys.USER_NAME
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
