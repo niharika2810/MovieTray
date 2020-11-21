@@ -5,7 +5,34 @@
         motion:autoTransition="animateToEnd"
         motion:constraintSetEnd="@+id/end"
         motion:constraintSetStart="@+id/start"
-        motion:duration="2000" />
+        motion:duration="2000">
+
+        <KeyFrameSet>
+            <KeyAttribute
+                android:rotation="-75"
+                android:scaleX="2"
+                android:scaleY="2"
+                motion:framePosition="80"
+                motion:motionTarget="@id/app_icon">
+                <CustomAttribute
+                    motion:attributeName="saturation"
+                    motion:customFloatValue="0" />
+            </KeyAttribute>
+
+            <KeyAttribute
+                motion:framePosition="90"
+                motion:motionTarget="@id/app_icon">
+                <CustomAttribute
+                    motion:attributeName="saturation"
+                    motion:customFloatValue="1" />
+            </KeyAttribute>
+            <KeyPosition
+                motion:framePosition="80"
+                motion:keyPositionType="parentRelative"
+                motion:motionTarget="@id/app_icon"
+                motion:percentY="0.75" />
+        </KeyFrameSet>
+    </Transition>
     <ConstraintSet android:id="@+id/start">
 
         <Constraint
@@ -27,27 +54,32 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:gravity="center"
             android:scaleX="0"
             android:scaleY="0"
-            android:gravity="center"
             android:translationX="-200dp"
             android:translationY="-200dp"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintTop_toBottomOf="@id/guidLineAuth" />
+            motion:layout_constraintTop_toBottomOf="@id/guidLineAuth">
+            <CustomAttribute
+                motion:attributeName="textColor"
+                motion:customColorValue="@color/black" />
+        </Constraint>
 
         <Constraint
             android:id="@id/app_icon"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             android:scaleX="0"
             android:scaleY="0"
-            android:layout_marginTop="20dp"
             android:src="@drawable/app_icon"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintTop_toBottomOf="@id/about_app" />
+
     </ConstraintSet>
 
     <ConstraintSet
@@ -73,24 +105,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:gravity="center"
             android:scaleX="1"
             android:scaleY="1"
-            android:gravity="center"
             android:translationX="0dp"
             android:translationY="0dp"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintTop_toBottomOf="@id/guidLineAuth" />
-
+            motion:layout_constraintTop_toBottomOf="@id/guidLineAuth">
+            <CustomAttribute
+                motion:attributeName="textColor"
+                motion:customColorValue="@color/teal_700" />
+        </Constraint>
 
         <Constraint
             android:id="@id/app_icon"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             android:scaleX="1"
             android:scaleY="1"
-            android:layout_marginTop="20dp"
             android:src="@drawable/app_icon"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"

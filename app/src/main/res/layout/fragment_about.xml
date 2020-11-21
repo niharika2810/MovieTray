@@ -32,7 +32,7 @@
         app:layout_constraintTop_toBottomOf="@id/guidLineAuth" />
 
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <androidx.constraintlayout.utils.widget.ImageFilterView
         android:id="@+id/app_icon"
         android:layout_width="100dp"
         android:layout_height="100dp"
