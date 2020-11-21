@@ -15,7 +15,7 @@ import dagger.hilt.android.components.ApplicationComponent
 object UserPreferencesModule {
 
     @Provides
-    fun provideUserPreferenceManager(sessionManager: IUserPreferenceManager): UserPreferenceManager {
-        return sessionManager
+    fun provideUserPreferenceManager(iUserPreferenceManager: IUserPreferenceManager): UserPreferenceManager {
+        return iUserPreferenceManager
     }
 }
