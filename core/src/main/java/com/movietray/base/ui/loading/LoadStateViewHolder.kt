@@ -22,9 +22,9 @@ class LoadStateViewHolder(
         if (loadState is LoadState.Error) {
             binding.errorMsg.text = loadState.error.localizedMessage
         }
-        binding.errorMsg.isVisible = loadState !is LoadState.Loading
+        binding.errorMsg.isVisible = loadState is LoadState.Error
         binding.retry.isVisible = loadState is LoadState.Error
-        binding.progress.isVisible = loadState !is LoadState.Loading
+        binding.progress.isVisible = loadState is LoadState.Loading
     }
 
     companion object {
