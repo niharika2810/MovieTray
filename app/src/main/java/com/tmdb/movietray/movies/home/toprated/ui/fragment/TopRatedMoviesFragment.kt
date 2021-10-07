@@ -84,6 +84,9 @@ class TopRatedMoviesFragment : Fragment() {
                 binding.topRatedMoviesList.isVisible = true
                 binding.progressBar.isVisible = false
                 binding.retryButton.isVisible = false
+                if(adapter.itemCount<1){
+                    binding.retryButton.isVisible=true
+                }
             }
             is LoadState.Loading -> {
                 binding.progressBar.isVisible = true
